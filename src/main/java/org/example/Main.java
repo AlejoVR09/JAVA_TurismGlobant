@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.modelos.Local;
-import org.example.modelos.Ofert;
-import org.example.modelos.Person;
-import org.example.modelos.Reserve;
+import org.example.modelos.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +9,10 @@ public class Main {
         Ofert ofert=new Ofert();
         Reserve reserve=new Reserve();
         Local local=new Local();
+        Herramienta okami=new Herramienta();
+        Alimento alimento=new Alimento();
+        Samurai jack=new Samurai();
+
+        System.out.println(jack.toString());
     }
 }

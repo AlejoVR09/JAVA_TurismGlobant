@@ -1,11 +1,11 @@
 package org.example.modelos;
 
 public class Local {
-    public Integer id;
-    public String Nit;
-    public String names;
-    public Integer Ubication;
-    public String description;
+    private Integer id;
+    private String Nit;
+    private String names;
+    private Integer Ubication;
+    private String description;
 
     public Local() {
 
@@ -19,4 +19,54 @@ public class Local {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Local{" +
+                "id=" + id +
+                ", Nit='" + Nit + '\'' +
+                ", names='" + names + '\'' +
+                ", Ubication=" + Ubication +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNit() {
+        return Nit;
+    }
+
+    public void setNit(String nit) {
+        Nit = nit;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+        this.names = names;
+    }
+
+    public Integer getUbication() {
+        return Ubication;
+    }
+
+    public void setUbication(Integer ubication) {
+        Ubication = ubication;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
