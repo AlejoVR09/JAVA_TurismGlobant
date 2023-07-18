@@ -1,18 +1,20 @@
 package org.example;
 
+import org.example.Validation.PersonValidation;
 import org.example.modelos.*;
+
+import java.util.Scanner;
+
+import static java.lang.Character.isDigit;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("Hello world!");
-        Person Alejo=new Person();
-        Ofert ofert=new Ofert();
-        Reserve reserve=new Reserve();
-        Local local=new Local();
-        Herramienta okami=new Herramienta();
-        Alimento alimento=new Alimento();
-        Samurai jack=new Samurai();
+        Scanner input=new Scanner(System.in);
+        Person ObjUser=new Person();
+        PersonValidation validate=new PersonValidation();
+        ObjUser.setNames("Ale");
+        System.out.println(validate.namevalidation(ObjUser.getNames()));
 
-        System.out.println(jack.toString());
+        //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
     }
 }

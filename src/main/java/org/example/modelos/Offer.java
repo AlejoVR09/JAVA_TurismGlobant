@@ -2,7 +2,7 @@ package org.example.modelos;
 
 import java.time.LocalDate;
 
-public class Ofert {
+public class Offer {
     private Integer id;
     private String titlle;
     private String description;
@@ -11,11 +11,11 @@ public class Ofert {
     private Double personCost;
     private Integer idLocal;
 
-    public Ofert() {
+    public Offer() {
 
     }
 
-    public Ofert(Integer id, String titlle, String description, LocalDate startDate, LocalDate endDate, Double personCost, Integer idLocal) {
+    public Offer(Integer id, String titlle, String description, LocalDate startDate, LocalDate endDate, Double personCost, Integer idLocal) {
         this.id = id;
         this.titlle = titlle;
         this.description = description;

@@ -13,7 +13,7 @@ public class Person {
 
     }
 
-    public Person(Integer id, String document, String names, String email, Integer ubication) {
+    public void Person(Integer id, String document, String names, String email, Integer ubication) {
         this.id = id;
         this.document = document;
         this.names = names;
