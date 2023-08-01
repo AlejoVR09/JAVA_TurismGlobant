@@ -1,4 +1,6 @@
-package org.example.modelos;
+package org.example.models;
+
+import org.example.validations.PersonValidation;
 
 public class Person {
 
@@ -8,7 +10,7 @@ public class Person {
     private String email;
     private Integer ubication;
 
-
+    private PersonValidation userValidator=new PersonValidation();
     public Person() {
 
     }
@@ -53,7 +55,13 @@ public class Person {
     }
 
     public void setNames(String names) {
-        this.names = names;
+        try {
+            this.userValidator.namevalidation(names);
+            this.names = names;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public String getEmail() {

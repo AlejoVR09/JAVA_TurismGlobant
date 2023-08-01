@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.Validation.PersonValidation;
-import org.example.modelos.*;
+import org.example.validations.PersonValidation;
+import org.example.models.*;
 
 import java.util.Scanner;
 
@@ -12,8 +12,7 @@ public class Main {
         Scanner input=new Scanner(System.in);
         Person ObjUser=new Person();
         PersonValidation validate=new PersonValidation();
-        ObjUser.setNames("Ale");
-        System.out.println(validate.namevalidation(ObjUser.getNames()));
+        ObjUser.setNames("Alejoooooooo1o");
 
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
     }

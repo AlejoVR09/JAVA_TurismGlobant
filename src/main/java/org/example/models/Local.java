@@ -1,4 +1,4 @@
-package org.example.modelos;
+package org.example.models;
 
 public class Local {
     private Integer id;

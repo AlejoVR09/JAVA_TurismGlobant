@@ -1,4 +1,4 @@
-package org.example.modelos;
+package org.example.models;
 
 import org.example.Herramienta;
 

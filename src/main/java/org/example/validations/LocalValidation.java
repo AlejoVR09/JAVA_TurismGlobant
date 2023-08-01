@@ -1,4 +1,4 @@
-package org.example.Validation;
+package org.example.validations;
 
 public class LocalValidation {
     public Boolean nitvalidation(){
