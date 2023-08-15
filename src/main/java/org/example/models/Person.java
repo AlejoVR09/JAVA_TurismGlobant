@@ -69,7 +69,14 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        try {
+            this.userValidator.emailvalidation(email);
+            this.email = email;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public Integer getUbication() {
@@ -77,6 +84,13 @@ public class Person {
     }
 
     public void setUbication(Integer ubication) {
-        this.ubication = ubication;
+        try{
+            userValidator.ubicationvalidation(ubication);
+            this.ubication = ubication;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }

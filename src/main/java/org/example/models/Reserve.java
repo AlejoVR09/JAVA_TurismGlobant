@@ -1,21 +1,25 @@
 package org.example.models;
 
+import org.example.validations.ReserveValidation;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Reserve {
     private Integer id;
-    private Integer idUser;
+    private Integer users;
     private Integer idOfert;
     private Double totalCost;
     private LocalDate reserveDate;
 
+    private ReserveValidation reserveValidation=new ReserveValidation();
     public Reserve() {
 
     }
 
-    public Reserve(Integer id, Integer idUser, Integer idOfert, Double totalCost, LocalDate reserveDate) {
+    public Reserve(Integer id, Integer users, Integer idOfert, Double totalCost, LocalDate reserveDate) {
         this.id = id;
-        this.idUser = idUser;
+        this.users = users;
         this.idOfert = idOfert;
         this.totalCost = totalCost;
         this.reserveDate = reserveDate;
@@ -25,7 +29,7 @@ public class Reserve {
     public String toString() {
         return "Reserve{" +
                 "id=" + id +
-                ", idUser=" + idUser +
+                ", idUser=" + users +
                 ", idOfert=" + idOfert +
                 ", totalCost=" + totalCost +
                 ", reserveDate=" + reserveDate +
@@ -40,12 +44,18 @@ public class Reserve {
         this.id = id;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public Integer getUsers() {
+        return users;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUsers(Integer users) {
+        try{
+            this.reserveValidation.peoplevalidation(users);
+            this.users = users;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public Integer getIdOfert() {
@@ -68,7 +78,15 @@ public class Reserve {
         return reserveDate;
     }
 
-    public void setReserveDate(LocalDate reserveDate) {
-        this.reserveDate = reserveDate;
+    public void setReserveDate(String reserveDate) {
+        try{
+            this.reserveValidation.datevalidation(reserveDate);
+            DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date=LocalDate.parse(reserveDate,formatter);
+            this.reserveDate =date;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

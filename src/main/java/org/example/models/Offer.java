@@ -1,15 +1,20 @@
 package org.example.models;
 
+import org.example.validations.OfferValidation;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Offer {
     private Integer id;
-    private String titlle;
+    private String tittle;
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
     private Double personCost;
     private Integer idLocal;
+
+    private OfferValidation offerValidation=new OfferValidation();
 
     public Offer() {
 
@@ -17,7 +22,7 @@ public class Offer {
 
     public Offer(Integer id, String titlle, String description, LocalDate startDate, LocalDate endDate, Double personCost, Integer idLocal) {
         this.id = id;
-        this.titlle = titlle;
+        this.tittle = titlle;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -29,7 +34,7 @@ public class Offer {
     public String toString() {
         return "Ofert{" +
                 "id=" + id +
-                ", titlle='" + titlle + '\'' +
+                ", titlle='" + tittle + '\'' +
                 ", description='" + description + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
@@ -38,59 +43,90 @@ public class Offer {
                 '}';
     }
 
-    private Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    private void setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    private String getTitlle() {
-        return titlle;
+    public String getTittle() {
+        return tittle;
     }
 
-    private void setTitlle(String titlle) {
-        this.titlle = titlle;
+    public void setTittle(String titlle) {
+        try{
+            this.offerValidation.tittlevalidation(titlle);
+            this.tittle = titlle;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    private LocalDate getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    private void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) {
+        try{
+            this.offerValidation.datevalidation(startDate);
+            DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date=LocalDate.parse(startDate,formatter);
+            this.startDate = date;
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private LocalDate getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    private void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String endDate) {
+        try{
+            this.offerValidation.datevalidation(endDate);
+            DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date=LocalDate.parse(endDate,formatter);
+            this.offerValidation.comparingvalidation(this.startDate, date);
+            this.endDate = date;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
-    private Double getPersonCost() {
+    public Double getPersonCost() {
         return personCost;
     }
 
-    private void setPersonCost(Double personCost) {
-        this.personCost = personCost;
+    public void setPersonCost(Double personCost) {
+        try{
+            this.offerValidation.costvalidation(personCost);
+            this.personCost = personCost;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private Integer getIdLocal() {
+    public Integer getIdLocal() {
         return idLocal;
     }
 
-    private void setIdLocal(Integer idLocal) {
+    public void setIdLocal(Integer idLocal) {
         this.idLocal = idLocal;
     }
 }

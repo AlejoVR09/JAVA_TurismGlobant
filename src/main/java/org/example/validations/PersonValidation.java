@@ -31,12 +31,15 @@ public class PersonValidation {
         return true;
     }
 
-    public Boolean ubicationvalidation(){
-        return false;
+    public Boolean ubicationvalidation(Integer ubication) throws Exception{
+        if (ubication==1 || ubication==2 || ubication==3 || ubication==4){
+            return true;
+        }
+        throw new Exception("Invalid ubication");
     }
 
     public Boolean emailvalidation(String email) throws Exception{
-        if(!validator.toSearchCoincidences(email,"^[a-zA-Z0-9._%+-]+[a-zA-Z0-9.-]+\\[a-zA-Z]{2,}$")){
+        if(!validator.toSearchCoincidences(email,"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")){
             throw new Exception("Email invalid");
         }
         else{
