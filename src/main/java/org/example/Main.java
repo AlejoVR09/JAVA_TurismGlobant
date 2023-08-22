@@ -30,7 +30,6 @@ public class Main {
 
 
         Reserve ObjReserve=new Reserve();
-
         //String year; String day; String month; String date=day+"-"+month+"-"+year
         //String date= "2023-11-21"
         ObjReserve.setReserveDate("11/11/2121");
