@@ -9,7 +9,7 @@ public class LocalValidation {
         if (nit.length()!=10){
             throw new Exception("The nit must have exactly 10 characters");
         }
-        else if (!validator.toSearchCoincidences(nit,"^[0-9]+$")){
+        if (!validator.toSearchCoincidences(nit,"^[0-9]+$")){
             throw new Exception("The nit must have only digits");
         }
         return true;
