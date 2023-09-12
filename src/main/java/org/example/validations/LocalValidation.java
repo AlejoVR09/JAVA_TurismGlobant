@@ -6,12 +6,14 @@ public class LocalValidation {
 
     private Util validator= new Util();
     public Boolean nitvalidation(String nit) throws Exception{
-        if (nit.length()!=10){
-            throw new Exception("The nit must have exactly 10 characters");
-        }
         if (!validator.toSearchCoincidences(nit,"^[0-9]+$")){
             throw new Exception("The nit must have only digits");
         }
+
+        if (nit.length()!=10){
+            throw new Exception("The nit must have exactly 10 characters");
+        }
+
         return true;
     }
 
