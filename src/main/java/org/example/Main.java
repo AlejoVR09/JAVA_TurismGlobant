@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.validations.PersonValidation;
-import org.example.models.*;
+import org.example.entities.*;
+import org.example.entities.User;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import static java.lang.Character.isDigit;
@@ -13,14 +11,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
 
-        Person ObjUser=new Person();
+        User ObjUser=new User();
         ObjUser.setNames("Alejooooooooo");
         ObjUser.setEmail("alejo@gmail.co");
         ObjUser.setUbication(3);
 
-        Local ObjLocal=new Local();
-        ObjLocal.setNames("Vil Gates");
-        ObjLocal.setNit("123456789");
+        //Company objCompany =new Company();
+        //objCompany.setNames("Vil Gates");
+        //objCompany.setNit("123456789");
 
         Offer ObjOffer=new Offer();
         ObjOffer.setTittle("Alejoo");

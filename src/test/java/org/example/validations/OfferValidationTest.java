@@ -12,7 +12,7 @@ public class OfferValidationTest {
 
     @BeforeEach
     public void initialTesting(){
-        System.out.println("Local's test");
+        System.out.println("Offer's test");
         this.offerValidation=new OfferValidation();
     }
 

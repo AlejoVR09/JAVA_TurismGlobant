@@ -2,12 +2,9 @@ package org.example.validations;
 
 import org.example.Utilities.Util;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static java.lang.Character.isDigit;
 
-public class PersonValidation {
+public class UserValidation {
     private Util validator= new Util();
     public Boolean namevalidation(String name) throws Exception{
 //        if(name.length()>=10){

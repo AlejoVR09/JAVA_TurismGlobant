@@ -15,4 +15,9 @@ public class Util {
             return false;
         }
     }
+
+    public Boolean validateCost(Double monthlyCost) {
+
+        return false;
+    }
 }

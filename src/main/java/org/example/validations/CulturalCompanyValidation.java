@@ -2,7 +2,7 @@ package org.example.validations;
 
 import org.example.Utilities.Util;
 
-public class LocalValidation {
+public class CulturalCompanyValidation {
 
     private Util validator= new Util();
     public Boolean nitvalidation(String nit) throws Exception{

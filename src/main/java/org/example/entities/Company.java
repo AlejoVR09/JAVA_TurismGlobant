@@ -1,20 +1,21 @@
-package org.example.models;
+package org.example.entities;
 
-import org.example.validations.LocalValidation;
+import org.example.validations.CompanyValidation;
 
-public class Local {
+public abstract class Company {
     private Integer id;
     private String Nit;
     private String names;
     private Integer Ubication;
     private String description;
 
-    private LocalValidation localValidation= new LocalValidation();
-    public Local() {
+    private CompanyValidation companyValidation = new CompanyValidation();
+
+    public Company() {
 
     }
 
-    public Local(Integer id, String nit, String names, Integer ubication, String description) {
+    public Company(Integer id, String nit, String names, Integer ubication, String description) {
         this.id = id;
         this.Nit = nit;
         this.names = names;
@@ -24,7 +25,7 @@ public class Local {
 
     @Override
     public String toString() {
-        return "Local{" +
+        return "Company{" +
                 "id=" + id +
                 ", Nit='" + Nit + '\'' +
                 ", names='" + names + '\'' +
@@ -47,7 +48,7 @@ public class Local {
 
     public void setNit(String nit) {
         try{
-            localValidation.nitvalidation(nit);
+            companyValidation.nitvalidation(nit);
             this.Nit = nit;
         }
         catch (Exception e){
@@ -61,7 +62,7 @@ public class Local {
 
     public void setNames(String names) {
         try{
-            localValidation.namevalidation(names);
+            companyValidation.namevalidation(names);
             this.names = names;
         }
         catch (Exception e){
@@ -85,4 +86,6 @@ public class Local {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public abstract Double collect();
 }
