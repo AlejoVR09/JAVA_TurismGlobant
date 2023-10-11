@@ -51,7 +51,7 @@ public class AffiliatedUserService {
         }
     }
 
-    public void eliminarAfiliado(AffiliatedUser affiliatedUser){
+    public void eliminarAfiliado(Integer id){
         //Nombre del traductor para hacer la persistencia
         String configuracionPersistencia="conexionbd";
 
@@ -65,17 +65,12 @@ public class AffiliatedUserService {
             entityManager=entityManagerFactory.createEntityManager();
 
             //crear un modelo de datos y lo voy a cargar con informacion
-            AffiliatedUserModel modeloUsuarioAfiliado=new AffiliatedUserModel();
-            modeloUsuarioAfiliado.setNames(affiliatedUser.getNames());
-            modeloUsuarioAfiliado.setDocument(affiliatedUser.getDocument());
-            modeloUsuarioAfiliado.setEmail((affiliatedUser.getEmail()));
-            modeloUsuarioAfiliado.setUbication((affiliatedUser.getUbication()));
 
             //Inicie la transaccion
             entityManager.getTransaction().begin();
 
             //activar la persistencia
-            entityManager.remove(entityManager.find(AffiliatedUserModel.class, modeloUsuarioAfiliado.getId()));
+            entityManager.remove(entityManager.find(AffiliatedUserModel.class, id));
 
             //registro de la operacion
             entityManager.getTransaction().commit();
