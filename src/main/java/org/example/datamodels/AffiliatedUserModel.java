@@ -7,6 +7,10 @@ public class AffiliatedUserModel extends User {
     @Column(name = "monthlycost")
     private Double monthlyCost;
 
+    public AffiliatedUserModel(){
+
+    }
+
     public AffiliatedUserModel(Double monthlyCost) {
         this.monthlyCost = monthlyCost;
     }
