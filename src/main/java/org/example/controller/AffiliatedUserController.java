@@ -20,7 +20,7 @@ public class AffiliatedUserController {
 
             //SI TODOS los datos del usuario se cargaron con set y no hubo errores
             //llamo al servicio para guardar los datos
-            this.servicioAfiliado.registrarAfiliado(usuarioMembresia);
+            System.out.println(usuarioMembresia.getEmail());
 
 
     }

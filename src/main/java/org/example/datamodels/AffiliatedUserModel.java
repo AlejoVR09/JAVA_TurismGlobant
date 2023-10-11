@@ -1,9 +1,11 @@
 package org.example.datamodels;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import org.example.entities.User;
 
-public class AffiliatedUserModel extends User {
+@Entity
+public class AffiliatedUserModel extends UserModel {
     @Column(name = "monthlycost")
     private Double monthlyCost;
 
