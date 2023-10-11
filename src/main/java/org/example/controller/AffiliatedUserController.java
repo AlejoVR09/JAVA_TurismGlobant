@@ -23,7 +23,7 @@ public class AffiliatedUserController {
         System.out.println(usuarioMembresia.getEmail());
     }
 
-    public void eliminarAfiliado(Integer id){
+    public void eliminarAfiliados(Integer id){
         System.out.println(usuarioMembresia.getEmail());
         this.servicioAfiliado.eliminarAfiliado(id);
     }
