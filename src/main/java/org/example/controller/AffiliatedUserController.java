@@ -5,26 +5,24 @@ import org.example.services.AffiliatedUserService;
 
 public class AffiliatedUserController {
 
-    //llamar a la clase que valida
-    AffiliatedUser usuarioMembresia = new AffiliatedUser();
-    //llamar al servicio
-    AffiliatedUserService servicioAfiliado = new AffiliatedUserService();
+    AffiliatedUser affiliatedUser = new AffiliatedUser();
+    AffiliatedUserService affiliatedUserService = new AffiliatedUserService();
 
-    public void registrarAfiliado(String name, String document, String email, Integer ubication) {
+    public void registerAffiliatedUser(String name, String document, String email, Integer ubication) {
+        // THIS METHOD MUST BE UPDATED TO ACCEPT WHATEVER FIELDS ARE REQUIRED.
 
-        //utilizare los SET del usuario menbresia par avalidar los datos
-        this.usuarioMembresia.setNames(name);
-        this.usuarioMembresia.setDocument(document);
-        this.usuarioMembresia.setEmail(email);
-        this.usuarioMembresia.setUbication(ubication);
-
-        //SI TODOS los datos del usuario se cargaron con set y no hubo errores
-        //llamo al servicio para guardar los datos
-        System.out.println(usuarioMembresia.getEmail());
+        this.affiliatedUser.setNames(name);
+        this.affiliatedUser.setDocument(document);
+        this.affiliatedUser.setEmail(email);
+        this.affiliatedUser.setUbication(ubication);
+        affiliatedUserService.registerAffiliatedUser(this.affiliatedUser);
     }
 
-    public void eliminarAfiliados(Integer id){
-        System.out.println(usuarioMembresia.getEmail());
-        this.servicioAfiliado.eliminarAfiliado(id);
+    public void deleteAffiliatedUser(Integer id) {
+        this.affiliatedUserService.deleteAffiliatedUser(id);
+    }
+
+    public void getAffiliatedUsers() {
+        this.affiliatedUserService.searchAffiliatedUsers();
     }
 }

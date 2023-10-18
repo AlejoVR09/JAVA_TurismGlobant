@@ -13,6 +13,10 @@ public class AffiliatedUserModel extends UserModel {
 
     }
 
+    public static AffiliatedUserModel createAffiliatedUserModel() {
+        return new AffiliatedUserModel();
+    }
+
     public AffiliatedUserModel(Double monthlyCost) {
         this.monthlyCost = monthlyCost;
     }

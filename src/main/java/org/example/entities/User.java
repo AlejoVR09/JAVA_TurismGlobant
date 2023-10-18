@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import org.example.interfaces.UserInterface;
 import org.example.validations.UserValidation;
 
 public class User {
@@ -86,7 +87,6 @@ public class User {
         }
 
     }
-
 
     public Integer getUbication() {
         return ubication;

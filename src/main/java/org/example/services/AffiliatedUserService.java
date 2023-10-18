@@ -1,94 +1,33 @@
 package org.example.services;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import org.example.Utilities.ServiceHelper;
 import org.example.datamodels.AffiliatedUserModel;
 import org.example.entities.AffiliatedUser;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class AffiliatedUserService {
-    public void registrarAfiliado(AffiliatedUser affiliatedUser){
-        //Nombre del traductor para hacer la persistencia
-        String configuracionPersistencia="conexionbd";
-
-        //Creamos una variable para la conexion
-        //creamos una variable para manjear la conexion
-        EntityManagerFactory entityManagerFactory=null;
-        EntityManager entityManager=null;
-
-        try{
-            entityManagerFactory= Persistence.createEntityManagerFactory(configuracionPersistencia);
-            entityManager=entityManagerFactory.createEntityManager();
-
-            //crear un modelo de datos y lo voy a cargar con informacion
-            AffiliatedUserModel modeloUsuarioAfiliado=new AffiliatedUserModel();
-            modeloUsuarioAfiliado.setNames(affiliatedUser.getNames());
-            modeloUsuarioAfiliado.setDocument(affiliatedUser.getDocument());
-            modeloUsuarioAfiliado.setEmail((affiliatedUser.getEmail()));
-            modeloUsuarioAfiliado.setUbication((affiliatedUser.getUbication()));
-
-            //Inicie la transaccion
-            entityManager.getTransaction().begin();
-
-            //activar la persistencia
-            entityManager.persist(modeloUsuarioAfiliado);
-
-            //registro de la operacion
-            entityManager.getTransaction().commit();
-
-            System.out.println("exito en la transaccion, afiliado registrado con exito");
-        }catch(Exception error){
-            System.out.println("fallamos "+error.getMessage());
-        }finally{
-            if(entityManager !=null){
-                entityManager.close();
-            }
-            if(entityManagerFactory !=null){
-                entityManagerFactory.close();
-            }
-        }
+    private ServiceHelper serviceHelper = new ServiceHelper();
+    public void registerAffiliatedUser(AffiliatedUser userModel){
+        HashMap params = new HashMap<String, String>();
+        params.put("className", "AffiliatedUser");
+        params.put("operationType", "create");
+        serviceHelper.createService(userModel).setupService(params);
     }
 
-    public void eliminarAfiliado(Integer id){
-        //Nombre del traductor para hacer la persistencia
-        String configuracionPersistencia="conexionbd";
-
-        //Creamos una variable para la conexion
-        //creamos una variable para manjear la conexion
-        EntityManagerFactory entityManagerFactory=null;
-        EntityManager entityManager=null;
-
-        try{
-            entityManagerFactory= Persistence.createEntityManagerFactory(configuracionPersistencia);
-            entityManager=entityManagerFactory.createEntityManager();
-
-            //crear un modelo de datos y lo voy a cargar con informacion
-
-            //Inicie la transaccion
-            entityManager.getTransaction().begin();
-
-            //activar la persistencia
-            entityManager.remove(entityManager.find(AffiliatedUserModel.class, id));
-
-            //registro de la operacion
-            entityManager.getTransaction().commit();
-
-            System.out.println("exito en la transaccion, afiliado registrado con exito");
-        }catch(Exception error){
-            System.out.println("fallamos "+error.getMessage());
-        }finally{
-            if(entityManager !=null){
-                entityManager.close();
-            }
-            if(entityManagerFactory !=null){
-                entityManagerFactory.close();
-            }
-        }
+    public void deleteAffiliatedUser(Integer id){
+        HashMap params = new HashMap<String, String>();
+        params.put("className", "AffiliatedUser");
+        params.put("operationType", "delete");
+        params.put("id", Integer.toString(id));
+        serviceHelper.createService().setupService(params);
     }
 
-    public List<AffiliatedUserModel> buscarAfiliados(){
-        return null;
+    public List<AffiliatedUserModel> searchAffiliatedUsers(){
+        HashMap params = new HashMap<String, String>();
+        params.put("className", "AffiliatedUser");
+        params.put("operationType", "list");
+        return (List<AffiliatedUserModel>) serviceHelper.createService().setupService(params);
     }
 }

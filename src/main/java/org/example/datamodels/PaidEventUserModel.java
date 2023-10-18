@@ -5,11 +5,15 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class PaidEventUserModel extends UserModel {
-    public PaidEventUserModel() {
-    }
 
     @Column(name = "costPerEvent")
     private double costPerEvent;
+
+    public static PaidEventUserModel createPaidEventUserModel() {
+        return new PaidEventUserModel();
+    }
+    public PaidEventUserModel() {
+    }
 
     public PaidEventUserModel(double costPerEvent) {
         this.costPerEvent = costPerEvent;
