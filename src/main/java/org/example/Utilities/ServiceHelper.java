@@ -1,0 +1,198 @@
+package org.example.Utilities;
+
+import com.mysql.cj.util.StringUtils;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import org.example.datamodels.AffiliatedUserModel;
+import org.example.datamodels.CulturalCompanyModel;
+import org.example.datamodels.PaidEventUserModel;
+import org.example.datamodels.PrivateCompanyModel;
+import org.example.entities.AffiliatedUser;
+import org.example.entities.CulturalCompany;
+import org.example.entities.PaidEventUser;
+import org.example.entities.PrivateCompany;
+import org.hibernate.property.access.spi.Setter;
+
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
+
+public class ServiceHelper<T> {
+    private EntityManagerFactory entityManagerFactory = null;
+    private EntityManager entityManager = null;
+    private AffiliatedUser affiliatedUser;
+    private CulturalCompany culturalCompany;
+    private PaidEventUser paidEventUser;
+    private PrivateCompany privateCompany;
+    private List<T> dataToReturn = null;
+    private final SetterAutomationTool automationTool = new SetterAutomationTool();
+
+    public ServiceHelper() {
+    }
+
+    public List<T> setupService(Map<String, String> props) {
+        try {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory(Constants.getPersistanceConfiguration());
+            entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            String operationType = props.get("className");
+            switch (operationType) {
+                case "AffiliatedUser":
+                    AffiliatedUserLogic(props);
+                    break;
+                case "CulturalCompany":
+                    CulturalCompanyLogic(props);
+                    break;
+                case "PrivateCompany":
+                    PrivateCompanyLogic(props);
+                    break;
+                case "PaidEventUser":
+                    PaidEventUserLogic(props);
+                    break;
+            }
+        } catch (Exception error) {
+            System.out.println("Error " + error.getMessage());
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+            if (entityManagerFactory != null) {
+                entityManagerFactory.close();
+            }
+        }
+        return dataToReturn;
+    }
+
+    public void AffiliatedUserLogic(Map<String, String> props) {
+        switch (props.get("operationType")) {
+            case "create":
+                AffiliatedUserModel affiliatedUserModel = new AffiliatedUserModel();
+                automationTool.updateObjectProperties(Constants.getListOfAcceptedAffiliatedUserFields(), affiliatedUser, affiliatedUserModel);
+                // GETTERS AND SETTERS
+                // affiliatedUserModel.setNames(affiliatedUser.getNames());
+                // affiliatedUserModel.setDocument(affiliatedUser.getDocument());
+                // affiliatedUserModel.setEmail(affiliatedUser.getEmail());
+                // affiliatedUserModel.setUbication(affiliatedUser.getUbication());
+                entityManager.persist(AffiliatedUserModel.createAffiliatedUserModel());
+                entityManager.getTransaction().commit();
+                System.out.println("Transaction success");
+                break;
+            case "delete":
+                entityManager.getTransaction().begin();
+                entityManager.remove(entityManager.find(AffiliatedUserModel.class, Integer.parseInt(props.get("id"))));
+                entityManager.getTransaction().commit();
+                break;
+            default:
+                String JPQLQuery = "SELECT af FROM AffiliatedUserModel af";
+                List<AffiliatedUserModel> affiliatedUsers = entityManager.createQuery(JPQLQuery, AffiliatedUserModel.class).getResultList();
+                dataToReturn = (List<T>) affiliatedUsers;
+                break;
+        }
+    }
+
+    public void CulturalCompanyLogic(Map<String, String> props) {
+        switch (props.get("operationType")) {
+            case "create":
+                CulturalCompanyModel culturalCompanyModel = new CulturalCompanyModel();
+                automationTool.updateObjectProperties(Constants.getListOfAcceptedCulturalCompanyFields(), culturalCompany, culturalCompanyModel);
+
+                // GETTERS AND SETTERS
+                // culturalCompanyModel.setNames(culturalCompany.getNames());
+                // culturalCompanyModel.setUbication(culturalCompany.getUbication());
+                entityManager.persist(CulturalCompanyModel.createCulturalCompanyModel());
+                entityManager.getTransaction().commit();
+                System.out.println("Transaction success");
+                break;
+            case "delete":
+                entityManager.getTransaction().begin();
+                entityManager.remove(entityManager.find(CulturalCompanyModel.class, Integer.parseInt(props.get("id"))));
+                entityManager.getTransaction().commit();
+                break;
+            default:
+                String JPQLQuery = "SELECT af FROM CulturalCompanyModel af";
+                List<CulturalCompanyModel> culturalCompanies = entityManager.createQuery(JPQLQuery, CulturalCompanyModel.class).getResultList();
+                dataToReturn = (List<T>) culturalCompanies;
+                break;
+        }
+    }
+
+    public void PrivateCompanyLogic(Map<String, String> props) {
+        switch (props.get("operationType")) {
+            case "create":
+                PrivateCompanyModel privateCompanyModel = new PrivateCompanyModel();
+                automationTool.updateObjectProperties(Constants.getListOfAcceptedPrivateCompanyFields(), privateCompany, privateCompanyModel);
+
+                // GETTERS AND SETTERS
+                // privateCompanyModel.setNames(privateCompany.getNames());
+                // privateCompanyModel.setUbication(privateCompany.getUbication());
+                entityManager.persist(PrivateCompanyModel.createPrivateCompanyModel());
+                entityManager.getTransaction().commit();
+                System.out.println("Transaction success");
+                break;
+            case "delete":
+                entityManager.getTransaction().begin();
+                entityManager.remove(entityManager.find(PrivateCompanyModel.class, Integer.parseInt(props.get("id"))));
+                entityManager.getTransaction().commit();
+                break;
+            default:
+                String JPQLQuery = "SELECT af FROM PrivateCompanyModel af";
+                List<PrivateCompanyModel> culturalCompanies = entityManager.createQuery(JPQLQuery, PrivateCompanyModel.class).getResultList();
+                dataToReturn = (List<T>) culturalCompanies;
+                break;
+        }
+    }
+
+    public void PaidEventUserLogic(Map<String, String> props) {
+        switch (props.get("operationType")) {
+            case "create":
+                PaidEventUserModel paidEventUserModel = new PaidEventUserModel();
+                automationTool.updateObjectProperties(Constants.getListOfAcceptedPaidEventUserFields(), paidEventUser, paidEventUserModel);
+
+                // GETTERS AND SETTERS
+                // paidEventUserModel.setNames(paidEventUser.getNames());
+                // paidEventUserModel.setDocument(paidEventUser.getDocument());
+                // paidEventUserModel.setEmail(paidEventUser.getEmail());
+                // paidEventUserModel.setUbication(paidEventUser.getUbication());
+                entityManager.persist(PaidEventUserModel.createPaidEventUserModel());
+                entityManager.getTransaction().commit();
+                System.out.println("Transaction success");
+                break;
+            case "delete":
+                entityManager.getTransaction().begin();
+                entityManager.remove(entityManager.find(PaidEventUserModel.class, Integer.parseInt(props.get("id"))));
+                entityManager.getTransaction().commit();
+                break;
+            default:
+                String JPQLQuery = "SELECT af FROM PaidEventUserModel af";
+                List<PaidEventUserModel> paidUsers = entityManager.createQuery(JPQLQuery, PaidEventUserModel.class).getResultList();
+                dataToReturn = (List<T>) paidUsers;
+                break;
+        }
+    }
+
+    public ServiceHelper createService() {
+        return new ServiceHelper();
+    }
+    public ServiceHelper createService(AffiliatedUser userModel) {
+        affiliatedUser = userModel;
+        return new ServiceHelper();
+    }
+    public ServiceHelper createService(CulturalCompany culturalCompanyModel) {
+        culturalCompany = culturalCompanyModel;
+        return new ServiceHelper();
+    }
+    public ServiceHelper createService(PrivateCompany privateCompanyModel) {
+        privateCompany = privateCompanyModel;
+        return new ServiceHelper();
+    }
+    public ServiceHelper createService(PaidEventUser paidEventUserModel) {
+        paidEventUser = paidEventUserModel;
+        return new ServiceHelper();
+    }
+}

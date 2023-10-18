@@ -5,7 +5,7 @@ import org.example.validations.ReserveValidation;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Reserve {
+public class Reservation {
     private Integer id;
     private Integer users;
     private Integer idOfert;
@@ -13,11 +13,11 @@ public class Reserve {
     private LocalDate reserveDate;
 
     private ReserveValidation reserveValidation=new ReserveValidation();
-    public Reserve() {
+    public Reservation() {
 
     }
 
-    public Reserve(Integer id, Integer users, Integer idOfert, Double totalCost, LocalDate reserveDate) {
+    public Reservation(Integer id, Integer users, Integer idOfert, Double totalCost, LocalDate reserveDate) {
         this.id = id;
         this.users = users;
         this.idOfert = idOfert;

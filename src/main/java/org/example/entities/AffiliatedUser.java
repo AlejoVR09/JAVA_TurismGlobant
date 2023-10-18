@@ -1,12 +1,14 @@
 package org.example.entities;
 
+import org.example.datamodels.AffiliatedUserModel;
+import org.example.interfaces.UserInterface;
 import org.example.validations.AffiliatedUserValidation;
 import org.example.validations.UserValidation;
 
 public class AffiliatedUser extends User {
     private Double monthlyCost;
 
-    private AffiliatedUserValidation affiliatedUserValidation=new AffiliatedUserValidation();
+    private AffiliatedUserValidation affiliatedUserValidation = new AffiliatedUserValidation();
 
     public AffiliatedUser() {
 
@@ -29,6 +31,10 @@ public class AffiliatedUser extends User {
         catch (Exception e){
 
         }
+    }
+
+    public static AffiliatedUser createAffiliatedUser() {
+        return new AffiliatedUser();
     }
 
     public void addGuest(){

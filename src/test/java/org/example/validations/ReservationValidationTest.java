@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-public class ReserveValidationTest {
+public class ReservationValidationTest {
     ReserveValidation reserveValidation;
     @BeforeEach
     public void initialTesting() {

@@ -1,41 +1,101 @@
 package org.example;
 
+import org.example.Utilities.Constants;
 import org.example.controller.AffiliatedUserController;
-import org.example.entities.*;
-import org.example.entities.User;
-
+import org.example.controller.CulturalCompanyController;
+import org.example.controller.PaidEventUserController;
+import org.example.controller.PrivateCompanyController;
 import java.util.Scanner;
-
-import static java.lang.Character.isDigit;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input=new Scanner(System.in);
-
-        //User ObjUser=new User();
-        //ObjUser.setNames("Alejooooooooo");
-        //ObjUser.setEmail("alejo@gmail.co");
-        //ObjUser.setUbication(3);
-
-        //Company objCompany =new Company();
-        //objCompany.setNames("Vil Gates");
-        //objCompany.setNit("123456789");
-
-        //Offer ObjOffer=new Offer();
-        //ObjOffer.setTittle("Alejoo");
-        //ObjOffer.setStartDate("10/11/2121");
-        //ObjOffer.setEndDate("11/11/2121");
-        //ObjOffer.setPersonCost(123141.1233);
-
-
-        //Reserve ObjReserve=new Reserve();
-        //String year; String day; String month; String date=day+"-"+month+"-"+year
-        //String date= "2023-11-21"
-        //ObjReserve.setReserveDate("11/11/2121");
-        //ObjReserve.setUsers(4);
-
-        AffiliatedUserController controladorAfiliado= new AffiliatedUserController();
-        //llamar al metodo para registrar un afiliado
-        controladorAfiliado.registrarAfiliado("juanjosegallego","1234567890","juan@gmail.com",4);
+        try (Scanner userInput = new Scanner(System.in)) {
+            String outputChatbox = "Select entity | 1. Affiliated user | 2. Paid per event | 3. Cultural Company | 4. Private Company";
+            System.out.println(outputChatbox);
+            Integer selectedOption = userInput.nextInt();
+            switch (selectedOption) {
+                case 1:
+                    AffiliatedUserController affiliatedUserController = new AffiliatedUserController();
+                    System.out.println(Constants.OUTPUT_CHATBOX_STATIC);
+                    selectedOption = userInput.nextInt();
+                    switch(selectedOption) {
+                        case 1:
+                            affiliatedUserController.registerAffiliatedUser("juanjosegallego", "1234567890", "juan@gmail.com", 4);
+                            break;
+                        case 2:
+                            affiliatedUserController.getAffiliatedUsers();
+                            break;
+                        case 3:
+                            affiliatedUserController.deleteAffiliatedUser(1);
+                            break;
+                        default:
+                            System.exit(-1);
+                            break;
+                    }
+                    break;
+                case 2:
+                    PaidEventUserController paidEventUserController = new PaidEventUserController();
+                    System.out.println(Constants.OUTPUT_CHATBOX_STATIC);
+                    selectedOption = userInput.nextInt();
+                    switch(selectedOption) {
+                        case 1:
+                            paidEventUserController.registerPaidEventUser("juanjosegallego", "1234567890", "juan@gmail.com", 4);
+                            break;
+                        case 2:
+                            paidEventUserController.getPaidEventUsers();
+                            break;
+                        case 3:
+                            paidEventUserController.deletePaidEventUser(1);
+                            break;
+                        default:
+                            System.exit(-1);
+                            break;
+                    }
+                    break;
+                case 3:
+                    CulturalCompanyController culturalCompanyController = new CulturalCompanyController();
+                    System.out.println(Constants.OUTPUT_CHATBOX_STATIC);
+                    selectedOption = userInput.nextInt();
+                    switch(selectedOption) {
+                        case 1:
+                            culturalCompanyController.registerCulturalCompany("juanjosegallego", "1234567890", "juan@gmail.com", 4);
+                            break;
+                        case 2:
+                            culturalCompanyController.getCulturalCompanies();
+                            break;
+                        case 3:
+                            culturalCompanyController.deleteCulturalCompany(1);
+                            break;
+                        default:
+                            System.exit(-1);
+                            break;
+                    }
+                    break;
+                case 4:
+                    PrivateCompanyController privateCompanyController = new PrivateCompanyController();
+                    System.out.println(Constants.OUTPUT_CHATBOX_STATIC);
+                    selectedOption = userInput.nextInt();
+                    switch(selectedOption) {
+                        case 1:
+                            privateCompanyController.registerPrivateCompany("juanjosegallego", "1234567890", "juan@gmail.com", 4);
+                            break;
+                        case 2:
+                            privateCompanyController.getPrivateCompanies();
+                            break;
+                        case 3:
+                            privateCompanyController.deletePrivateCompany(1);
+                            break;
+                        default:
+                            System.exit(-1);
+                            break;
+                    }
+                    break;
+                default:
+                    System.exit(-1);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
