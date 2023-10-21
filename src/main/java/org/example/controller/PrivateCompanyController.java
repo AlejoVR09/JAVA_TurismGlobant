@@ -8,7 +8,6 @@ public class PrivateCompanyController {
     PrivateCompanyService privateCompanyService = new PrivateCompanyService();
 
     public void registerPrivateCompany(String name, String document, String email, Integer ubication) {
-        // THIS METHOD MUST BE UPDATED TO ACCEPT WHATEVER FIELDS ARE REQUIRED.
         this.privateCompany.setNames(name);
         privateCompanyService.registerPrivateCompany(this.privateCompany);
     }
