@@ -66,6 +66,7 @@ public class ServiceHelper<T> {
                 entityManagerFactory.close();
             }
         }
+        System.out.println(dataToReturn);
         return dataToReturn;
     }
 
@@ -74,12 +75,7 @@ public class ServiceHelper<T> {
             case "create":
                 AffiliatedUserModel affiliatedUserModel = new AffiliatedUserModel();
                 automationTool.updateObjectProperties(Constants.getListOfAcceptedAffiliatedUserFields(), affiliatedUser, affiliatedUserModel);
-                // GETTERS AND SETTERS
-                // affiliatedUserModel.setNames(affiliatedUser.getNames());
-                // affiliatedUserModel.setDocument(affiliatedUser.getDocument());
-                // affiliatedUserModel.setEmail(affiliatedUser.getEmail());
-                // affiliatedUserModel.setUbication(affiliatedUser.getUbication());
-                entityManager.persist(AffiliatedUserModel.createAffiliatedUserModel());
+                entityManager.persist(affiliatedUserModel);
                 entityManager.getTransaction().commit();
                 System.out.println("Transaction success");
                 break;
@@ -101,11 +97,7 @@ public class ServiceHelper<T> {
             case "create":
                 CulturalCompanyModel culturalCompanyModel = new CulturalCompanyModel();
                 automationTool.updateObjectProperties(Constants.getListOfAcceptedCulturalCompanyFields(), culturalCompany, culturalCompanyModel);
-
-                // GETTERS AND SETTERS
-                // culturalCompanyModel.setNames(culturalCompany.getNames());
-                // culturalCompanyModel.setUbication(culturalCompany.getUbication());
-                entityManager.persist(CulturalCompanyModel.createCulturalCompanyModel());
+                entityManager.persist(culturalCompanyModel);
                 entityManager.getTransaction().commit();
                 System.out.println("Transaction success");
                 break;
@@ -127,11 +119,7 @@ public class ServiceHelper<T> {
             case "create":
                 PrivateCompanyModel privateCompanyModel = new PrivateCompanyModel();
                 automationTool.updateObjectProperties(Constants.getListOfAcceptedPrivateCompanyFields(), privateCompany, privateCompanyModel);
-
-                // GETTERS AND SETTERS
-                // privateCompanyModel.setNames(privateCompany.getNames());
-                // privateCompanyModel.setUbication(privateCompany.getUbication());
-                entityManager.persist(PrivateCompanyModel.createPrivateCompanyModel());
+                entityManager.persist(privateCompanyModel);
                 entityManager.getTransaction().commit();
                 System.out.println("Transaction success");
                 break;
@@ -159,7 +147,7 @@ public class ServiceHelper<T> {
                 // paidEventUserModel.setDocument(paidEventUser.getDocument());
                 // paidEventUserModel.setEmail(paidEventUser.getEmail());
                 // paidEventUserModel.setUbication(paidEventUser.getUbication());
-                entityManager.persist(PaidEventUserModel.createPaidEventUserModel());
+                entityManager.persist(paidEventUserModel);
                 entityManager.getTransaction().commit();
                 System.out.println("Transaction success");
                 break;
@@ -176,23 +164,32 @@ public class ServiceHelper<T> {
         }
     }
 
+    private ServiceHelper createInstance() {
+        ServiceHelper newInstance = new ServiceHelper();
+        return newInstance;
+    }
+
     public ServiceHelper createService() {
         return new ServiceHelper();
     }
     public ServiceHelper createService(AffiliatedUser userModel) {
-        affiliatedUser = userModel;
-        return new ServiceHelper();
+        ServiceHelper newInstance = createInstance();
+        newInstance.affiliatedUser = userModel;
+        return newInstance;
     }
     public ServiceHelper createService(CulturalCompany culturalCompanyModel) {
-        culturalCompany = culturalCompanyModel;
-        return new ServiceHelper();
+        ServiceHelper newInstance = createInstance();
+        newInstance.culturalCompany = culturalCompanyModel;
+        return newInstance;
     }
     public ServiceHelper createService(PrivateCompany privateCompanyModel) {
-        privateCompany = privateCompanyModel;
-        return new ServiceHelper();
+        ServiceHelper newInstance = createInstance();
+        newInstance.privateCompany = privateCompanyModel;
+        return newInstance;
     }
     public ServiceHelper createService(PaidEventUser paidEventUserModel) {
-        paidEventUser = paidEventUserModel;
-        return new ServiceHelper();
+        ServiceHelper newInstance = createInstance();
+        newInstance.paidEventUser = paidEventUserModel;
+        return newInstance;
     }
 }

@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.datamodels.AffiliatedUserModel;
 import org.example.entities.AffiliatedUser;
 import org.example.services.AffiliatedUserService;
 
@@ -8,10 +9,8 @@ public class AffiliatedUserController {
     AffiliatedUser affiliatedUser = new AffiliatedUser();
     AffiliatedUserService affiliatedUserService = new AffiliatedUserService();
 
-    public void registerAffiliatedUser(String name, String document, String email, Integer ubication) {
-        // THIS METHOD MUST BE UPDATED TO ACCEPT WHATEVER FIELDS ARE REQUIRED.
-
-        this.affiliatedUser.setNames(name);
+    public void registerAffiliatedUser(String names, String document, String email, Integer ubication) {
+        this.affiliatedUser.setNames(names);
         this.affiliatedUser.setDocument(document);
         this.affiliatedUser.setEmail(email);
         this.affiliatedUser.setUbication(ubication);
@@ -23,6 +22,10 @@ public class AffiliatedUserController {
     }
 
     public void getAffiliatedUsers() {
-        this.affiliatedUserService.searchAffiliatedUsers();
+        for (AffiliatedUserModel element : this.affiliatedUserService.searchAffiliatedUsers()) {
+            System.out.println(element.getNames());
+        };
+
+        System.out.println("CONTROLLER SEARCH RAN");
     }
 }

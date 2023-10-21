@@ -3,6 +3,7 @@ package org.example.Utilities;
 import org.example.datamodels.AffiliatedUserModel;
 import org.example.datamodels.CulturalCompanyModel;
 import org.example.datamodels.PaidEventUserModel;
+
 import org.example.datamodels.PrivateCompanyModel;
 import org.example.entities.AffiliatedUser;
 import org.example.entities.CulturalCompany;
@@ -17,12 +18,12 @@ public class SetterAutomationTool {
         for (String fieldName : listOfFields) {
             // THIS EXECUTES OBJECT SETTERS AND GETTERS
             try {
-                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, AffiliatedUser.class);
+                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
                 String getterValue = affiliatedUserPropertyDescriptor
                         .getReadMethod()
                         .invoke(classInstance)
                         .toString();
-                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, AffiliatedUserModel.class);
+                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
                         .invoke(modelInstance, getterValue);
@@ -36,12 +37,12 @@ public class SetterAutomationTool {
         for (String fieldName : listOfFields) {
             // THIS EXECUTES OBJECT SETTERS AND GETTERS
             try {
-                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, CulturalCompany.class);
+                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
                 String getterValue = affiliatedUserPropertyDescriptor
                         .getReadMethod()
                         .invoke(classInstance)
                         .toString();
-                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, CulturalCompanyModel.class);
+                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
                         .invoke(modelInstance, getterValue);
@@ -55,12 +56,12 @@ public class SetterAutomationTool {
         for (String fieldName : listOfFields) {
             // THIS EXECUTES OBJECT SETTERS AND GETTERS
             try {
-                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, PrivateCompany.class);
+                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
                 String getterValue = affiliatedUserPropertyDescriptor
                         .getReadMethod()
                         .invoke(classInstance)
                         .toString();
-                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, PrivateCompanyModel.class);
+                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
                         .invoke(modelInstance, getterValue);
@@ -74,12 +75,12 @@ public class SetterAutomationTool {
         for (String fieldName : listOfFields) {
             // THIS EXECUTES OBJECT SETTERS AND GETTERS
             try {
-                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, PaidEventUser.class);
+                PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
                 String getterValue = affiliatedUserPropertyDescriptor
                         .getReadMethod()
                         .invoke(classInstance)
                         .toString();
-                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, PaidEventUserModel.class);
+                PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
                         .invoke(modelInstance, getterValue);
