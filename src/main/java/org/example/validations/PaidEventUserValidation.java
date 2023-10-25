@@ -5,9 +5,10 @@ import org.example.Utilities.Util;
 public class PaidEventUserValidation {
 
     Util validator = new Util();
-    public void validateCost(double costPerEvent) {
-        if (!this.validator.validateCost(costPerEvent)){
-
+    public Boolean validateCost(Double costPerEvent, Double maxValue) throws Exception{
+        if (!this.validator.validateCost(costPerEvent, maxValue)){
+            throw new Exception("Invalid Payment!");
         }
+        return true;
     }
 }

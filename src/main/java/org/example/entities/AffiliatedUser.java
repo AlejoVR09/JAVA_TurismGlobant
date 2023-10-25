@@ -25,11 +25,11 @@ public class AffiliatedUser extends User {
 
     public void setMonthlyCost(Double monthlyCost) {
         try{
-            this.affiliatedUserValidation.validateCost(monthlyCost);
+            this.affiliatedUserValidation.validateCost(monthlyCost, 100000D);
             this.monthlyCost = monthlyCost;
         }
         catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
     }
 

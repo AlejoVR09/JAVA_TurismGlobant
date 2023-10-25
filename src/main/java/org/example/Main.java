@@ -5,6 +5,10 @@ import org.example.controller.AffiliatedUserController;
 import org.example.controller.CulturalCompanyController;
 import org.example.controller.PaidEventUserController;
 import org.example.controller.PrivateCompanyController;
+import org.example.entities.AffiliatedUser;
+import org.example.entities.CulturalCompany;
+import org.example.entities.PaidEventUser;
+
 import java.util.Scanner;
 
 public class Main {
@@ -109,6 +113,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+//        PaidEventUser user = new PaidEventUser();
+//        user.setCostPerEvent(99999D);
+//        System.out.println(user.getCostPerEvent());
 
+//        CulturalCompany company = new CulturalCompany();
     }
 }

@@ -22,11 +22,11 @@ public class PaidEventUser extends User {
 
     public void setCostPerEvent(double costPerEvent) {
         try {
-            this.paidEventUserValidation.validateCost(costPerEvent);
+            this.paidEventUserValidation.validateCost(costPerEvent, 200000D);
             this.costPerEvent = costPerEvent;
         }
         catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
     }
 

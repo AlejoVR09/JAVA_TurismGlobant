@@ -19,7 +19,7 @@ public class UserValidation {
 //            return false;
 //        }
         if(!validator.toSearchCoincidences(name,"^[a-zA-Z]+$")){
-            throw new Exception("The name muust not contain numbers");
+            throw new Exception("The name must not contain numbers");
         }
         if (name.length()<10){
             throw new Exception("the name must contain at least 10 characters");

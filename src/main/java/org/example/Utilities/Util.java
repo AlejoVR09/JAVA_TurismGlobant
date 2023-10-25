@@ -16,8 +16,7 @@ public class Util {
         }
     }
 
-    public Boolean validateCost(Double monthlyCost) {
-
-        return false;
+    public Boolean validateCost(Double value, Double maxValue) {
+        return value<=maxValue && value>=0;
     }
 }
