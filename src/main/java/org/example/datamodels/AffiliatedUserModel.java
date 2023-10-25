@@ -1,11 +1,15 @@
 package org.example.datamodels;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import org.example.entities.User;
 
 @Entity
+//@Table(name = "affiliatedUser")
 public class AffiliatedUserModel extends UserModel {
+    //@ManyToOne
+    //@JoinColumn(name = "id_user")
+    //private UserModel userModel;
+
     @Column(name = "monthlycost")
     private Double monthlyCost;
 

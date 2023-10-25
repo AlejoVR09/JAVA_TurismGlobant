@@ -9,7 +9,7 @@ public class CompanyModel {
     @Column(name = "id_company")
     private Integer id;
     @Column(name = "nit", nullable = false, length = 50)
-    private String Nit;
+    private String nit;
     @Column(name = "names", nullable = false, length = 50)
     private String names;
     @Column(name = "ubication", nullable = false, length = 4)
@@ -22,7 +22,7 @@ public class CompanyModel {
 
     public CompanyModel(Integer id, String nit, String names, Integer ubication, String description) {
         this.id = id;
-        this.Nit = nit;
+        this.nit = nit;
         this.names = names;
         this.Ubication = ubication;
         this.description = description;
@@ -37,11 +37,11 @@ public class CompanyModel {
     }
 
     public String getNit() {
-        return Nit;
+        return nit;
     }
 
     public void setNit(String nit) {
-        Nit = nit;
+        this.nit = nit;
     }
 
     public String getNames() {

@@ -9,11 +9,12 @@ public class AffiliatedUserController {
     AffiliatedUser affiliatedUser = new AffiliatedUser();
     AffiliatedUserService affiliatedUserService = new AffiliatedUserService();
 
-    public void registerAffiliatedUser(String names, String document, String email, Integer ubication) {
+    public void registerAffiliatedUser(String names, String document, String email, Integer ubication, Double monthlyCost) {
         this.affiliatedUser.setNames(names);
         this.affiliatedUser.setDocument(document);
         this.affiliatedUser.setEmail(email);
         this.affiliatedUser.setUbication(ubication);
+        this.affiliatedUser.setMonthlyCost(monthlyCost);
         affiliatedUserService.registerAffiliatedUser(this.affiliatedUser);
     }
 
@@ -23,9 +24,15 @@ public class AffiliatedUserController {
 
     public void getAffiliatedUsers() {
         for (AffiliatedUserModel element : this.affiliatedUserService.searchAffiliatedUsers()) {
-            System.out.println(element.getNames());
+            System.out.println(
+                    "Name: " + element.getNames()+ "\n"+
+                    "Document: " + element.getDocument()+ "\n"+
+                    "Email: " + element.getEmail()+ "\n"+
+                    "Ubication: " + element.getUbication()+ "\n"+
+                    "Montly Cost: " + element.getMonthlyCost()+ "\n"
+            );
         };
 
-        System.out.println("CONTROLLER SEARCH RAN");
+//        System.out.println("CONTROLLER SEARCH RAN");
     }
 }

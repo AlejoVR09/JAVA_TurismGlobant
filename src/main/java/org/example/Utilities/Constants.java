@@ -9,16 +9,16 @@ public class Constants {
 
     // PLACE ALL THE FIELDS THAT WILL BE USED IN THE CONTROLLER (REGISTER) METHOD IN THIS LIST......
     private static final List<String> listOfAcceptedAffiliatedUserFields = Arrays.asList(
-            "names", "document", "email", "ubication"
+            "names", "document", "email", "ubication", "monthlyCost"
     );
     public static final List<String> listOfAcceptedCulturalCompanyFields = Arrays.asList(
-            "names"
+            "nit", "names", "ubication", "description"
     );
     public static final List<String> listOfAcceptedPaidEventUserFields = Arrays.asList(
-            "names"
+            "names", "document", "email", "ubication", "costPerEvent"
     );
     public static final List<String> listOfAcceptedPrivateCompanyFields = Arrays.asList(
-            "names"
+            "nit", "names", "ubication", "description"
     );
     public static List<String> getListOfAcceptedCulturalCompanyFields() {
         return listOfAcceptedCulturalCompanyFields;

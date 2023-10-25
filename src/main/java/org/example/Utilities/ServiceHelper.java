@@ -34,15 +34,11 @@ public class ServiceHelper<T> {
 
     public List<T> setupService(Map<String, String> props) {
         try {
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
             entityManagerFactory = Persistence.createEntityManagerFactory(Constants.getPersistanceConfiguration());
             entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
-            String operationType = props.get("className");
-            switch (operationType) {
+            String entityClassName = props.get("className");
+            switch (entityClassName) {
                 case "AffiliatedUser":
                     AffiliatedUserLogic(props);
                     break;
@@ -80,7 +76,7 @@ public class ServiceHelper<T> {
                 System.out.println("Transaction success");
                 break;
             case "delete":
-                entityManager.getTransaction().begin();
+//                entityManager.getTransaction().begin();
                 entityManager.remove(entityManager.find(AffiliatedUserModel.class, Integer.parseInt(props.get("id"))));
                 entityManager.getTransaction().commit();
                 break;

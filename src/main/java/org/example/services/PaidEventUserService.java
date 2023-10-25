@@ -10,11 +10,11 @@ import java.util.List;
 
 public class PaidEventUserService {
     private ServiceHelper serviceHelper = new ServiceHelper();
-    public void registerPaidEventUser(PaidEventUser paidEventUser){
+    public void registerPaidEventUser(PaidEventUser userModel){
         HashMap params = new HashMap<String, String>();
         params.put("className", "PaidEventUser");
         params.put("operationType", "create");
-        serviceHelper.createService(paidEventUser).setupService(params);
+        serviceHelper.createService(userModel).setupService(params);
     }
 
     public void deletePaidEventUser(Integer id){

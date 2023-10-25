@@ -3,6 +3,8 @@ package org.example.datamodels;
 import jakarta.persistence.*;
 
 @Entity
+//@Table(name = "userModel")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class UserModel {
 
     @Id

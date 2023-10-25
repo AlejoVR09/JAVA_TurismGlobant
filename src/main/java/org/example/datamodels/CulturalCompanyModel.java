@@ -1,6 +1,11 @@
 package org.example.datamodels;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
+@Entity
 public class CulturalCompanyModel extends CompanyModel {
+    //@Column(name = "a")
     public CulturalCompanyModel() {
     }
 
