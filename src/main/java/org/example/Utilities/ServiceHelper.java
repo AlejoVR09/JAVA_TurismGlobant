@@ -76,7 +76,6 @@ public class ServiceHelper<T> {
                 System.out.println("Transaction success");
                 break;
             case "delete":
-//                entityManager.getTransaction().begin();
                 entityManager.remove(entityManager.find(AffiliatedUserModel.class, Integer.parseInt(props.get("id"))));
                 entityManager.getTransaction().commit();
                 break;
@@ -98,7 +97,6 @@ public class ServiceHelper<T> {
                 System.out.println("Transaction success");
                 break;
             case "delete":
-                entityManager.getTransaction().begin();
                 entityManager.remove(entityManager.find(CulturalCompanyModel.class, Integer.parseInt(props.get("id"))));
                 entityManager.getTransaction().commit();
                 break;
@@ -120,7 +118,6 @@ public class ServiceHelper<T> {
                 System.out.println("Transaction success");
                 break;
             case "delete":
-                entityManager.getTransaction().begin();
                 entityManager.remove(entityManager.find(PrivateCompanyModel.class, Integer.parseInt(props.get("id"))));
                 entityManager.getTransaction().commit();
                 break;
@@ -148,7 +145,6 @@ public class ServiceHelper<T> {
                 System.out.println("Transaction success");
                 break;
             case "delete":
-                entityManager.getTransaction().begin();
                 entityManager.remove(entityManager.find(PaidEventUserModel.class, Integer.parseInt(props.get("id"))));
                 entityManager.getTransaction().commit();
                 break;

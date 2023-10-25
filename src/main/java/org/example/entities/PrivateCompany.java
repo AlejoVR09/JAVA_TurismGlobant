@@ -2,16 +2,16 @@ package org.example.entities;
 
 public class PrivateCompany extends Company {
     private String agentId;
-    private String agentNamel;
+    private String agentName;
 
     public PrivateCompany() {
 
     }
 
-    public PrivateCompany(Integer id, String nit, String names, Integer ubication, String description, String agentId, String agentNamel) {
+    public PrivateCompany(Integer id, String nit, String names, Integer ubication, String description, String agentId, String agentName) {
         super(id, nit, names, ubication, description);
         this.agentId = agentId;
-        this.agentNamel = agentNamel;
+        this.agentName = agentName;
     }
 
     public String getAgentId() {
@@ -22,12 +22,12 @@ public class PrivateCompany extends Company {
         this.agentId = agentId;
     }
 
-    public String getAgentNamel() {
-        return agentNamel;
+    public String getAgentName() {
+        return agentName;
     }
 
-    public void setAgentNamel(String agentNamel) {
-        this.agentNamel = agentNamel;
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
     }
 
     @Override

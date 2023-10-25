@@ -5,20 +5,23 @@ import java.util.List;
 
 public class Constants {
     public static final String OUTPUT_CHATBOX_STATIC = "Select action | 1. Register new entity | 2. View all | 3. Delete entity by ID";
+    public static final String OUTPUT_CHATBOX_STATIC_SELECT = "Select entity | 1. Affiliated user | 2. Paid per event | 3. Cultural Company | 4. Private Company";
+    public static final String OUTPUT_CHATBOX_STATIC_ID = "Insert the ID of the entity:";
+
     private static final String PERSISTANCE_CONFIGURATION = "conexionbd";
 
     // PLACE ALL THE FIELDS THAT WILL BE USED IN THE CONTROLLER (REGISTER) METHOD IN THIS LIST......
     private static final List<String> listOfAcceptedAffiliatedUserFields = Arrays.asList(
             "names", "document", "email", "ubication", "monthlyCost"
     );
-    public static final List<String> listOfAcceptedCulturalCompanyFields = Arrays.asList(
-            "nit", "names", "ubication", "description"
+    private static final List<String> listOfAcceptedCulturalCompanyFields = Arrays.asList(
+            "nit", "names", "ubication", "description", "ong", "mission", "contactPhone", "contactEmail"
     );
-    public static final List<String> listOfAcceptedPaidEventUserFields = Arrays.asList(
+    private static final List<String> listOfAcceptedPaidEventUserFields = Arrays.asList(
             "names", "document", "email", "ubication", "costPerEvent"
     );
-    public static final List<String> listOfAcceptedPrivateCompanyFields = Arrays.asList(
-            "nit", "names", "ubication", "description"
+    private static final List<String> listOfAcceptedPrivateCompanyFields = Arrays.asList(
+            "nit", "names", "ubication", "description", "agentId", "agentName"
     );
     public static List<String> getListOfAcceptedCulturalCompanyFields() {
         return listOfAcceptedCulturalCompanyFields;
