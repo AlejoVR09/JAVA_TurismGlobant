@@ -87,5 +87,5 @@ public abstract class Company {
         this.description = description;
     }
 
-    public abstract Double collect();
+    public abstract Double collect(Double pay);
 }

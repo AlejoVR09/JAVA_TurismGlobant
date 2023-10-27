@@ -1,5 +1,8 @@
 package org.example.entities;
 
+import org.example.validations.CompanyValidation;
+import org.example.validations.CulturalCompanyValidation;
+
 public class CulturalCompany extends Company{
 
     private String ong;
@@ -9,6 +12,8 @@ public class CulturalCompany extends Company{
     private String contactPhone;
 
     private String contactEmail;
+
+    private CulturalCompanyValidation culturalCompanyValidation = new CulturalCompanyValidation();
 
     public CulturalCompany() {
 
@@ -55,7 +60,17 @@ public class CulturalCompany extends Company{
     }
 
     @Override
-    public Double collect() {
-        return null;
+    public Double collect(Double pay) {
+        try {
+            this.culturalCompanyValidation.costvalidation(pay);
+            Double discount=pay-(pay*0.10);
+            return (discount+(discount*0.19));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        finally {
+            return 0D;
+        }
     }
 }

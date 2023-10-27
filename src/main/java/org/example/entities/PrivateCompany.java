@@ -1,8 +1,13 @@
 package org.example.entities;
 
+import org.example.validations.CompanyValidation;
+import org.example.validations.PrivateCompanyValidation;
+
 public class PrivateCompany extends Company {
     private String agentId;
     private String agentName;
+
+    private PrivateCompanyValidation privateCompanyValidation = new PrivateCompanyValidation();
 
     public PrivateCompany() {
 
@@ -31,8 +36,17 @@ public class PrivateCompany extends Company {
     }
 
     @Override
-    public Double collect() {
-        return null;
+    public Double collect(Double pay) {
+        try {
+            this.privateCompanyValidation.costvalidation(pay);
+            return pay+(pay*0.19);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        finally {
+            return 0D;
+        }
     }
 
 
