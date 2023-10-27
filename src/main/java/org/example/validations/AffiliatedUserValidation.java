@@ -13,4 +13,16 @@ public class AffiliatedUserValidation {
         return true;
 
     }
+
+    public Boolean docvalidation(String doc) throws Exception{
+        if (!validator.toSearchCoincidences(doc,"^[0-9]+$")){
+            throw new Exception("The Document must have only digits");
+        }
+
+        if (doc.length()!=10){
+            throw new Exception("The Document must have exactly 10 characters");
+        }
+
+        return true;
+    }
 }

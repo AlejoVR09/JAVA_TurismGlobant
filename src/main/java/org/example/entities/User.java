@@ -52,7 +52,13 @@ public class User {
 
 
     public void setDocument(String document) {
-        this.document = document;
+        try {
+            this.userValidator.docvalidation(document);
+            this.document = document;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 

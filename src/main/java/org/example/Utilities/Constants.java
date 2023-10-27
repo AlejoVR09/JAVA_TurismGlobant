@@ -4,15 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
-    public static final String OUTPUT_CHATBOX_STATIC = "Select action | 1. Register new entity | 2. View all | 3. Delete entity by ID";
-    public static final String OUTPUT_CHATBOX_STATIC_SELECT = "Select entity | 1. Affiliated user | 2. Paid per event | 3. Cultural Company | 4. Private Company";
+    public static final String OUTPUT_CHATBOX_STATIC = "Select action\n | 1. Register new entity | 2. View all | 3. Delete entity by ID";
+    public static final String OUTPUT_CHATBOX_STATIC_SELECT = "Select entity\n | 1. Affiliated user | 2. Paid per event | 3. Cultural Company | 4. Private Company | 5. Generate Report";
+
+    public static final String OUTPUT_CHATBOX_STATIC_GENERATE = "Select entity for reporting\n| 1. Affiliated user | 2. Paid per event | 3. Cultural Company | 4. Private Company";
     public static final String OUTPUT_CHATBOX_STATIC_ID = "Insert the ID of the entity:";
+    public static final String OUTPUT_CHATBOX_STATIC_DELETE = "Insert the ID of the user to delete: :";
 
     private static final String PERSISTANCE_CONFIGURATION = "conexionbd";
 
     // PLACE ALL THE FIELDS THAT WILL BE USED IN THE CONTROLLER (REGISTER) METHOD IN THIS LIST......
     private static final List<String> listOfAcceptedAffiliatedUserFields = Arrays.asList(
-            "names", "document", "email", "ubication", "monthlyCost"
+            "names", "document", "email", "ubication", "monthlyCost", "referredId", "startDay", "endDay"
     );
     private static final List<String> listOfAcceptedCulturalCompanyFields = Arrays.asList(
             "nit", "names", "ubication", "description", "ong", "mission", "contactPhone", "contactEmail"

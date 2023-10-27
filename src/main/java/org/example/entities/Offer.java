@@ -14,6 +14,8 @@ public class Offer {
     private Double personCost;
     private Integer idLocal;
 
+
+
     private OfferValidation offerValidation=new OfferValidation();
 
     public Offer() {
@@ -116,6 +118,7 @@ public class Offer {
         try{
             this.offerValidation.costvalidation(personCost);
             this.personCost = personCost;
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -128,5 +131,21 @@ public class Offer {
 
     public void setIdLocal(Integer idLocal) {
         this.idLocal = idLocal;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public OfferValidation getOfferValidation() {
+        return offerValidation;
+    }
+
+    public void setOfferValidation(OfferValidation offerValidation) {
+        this.offerValidation = offerValidation;
     }
 }

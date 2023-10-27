@@ -1,12 +1,17 @@
 package org.example.entities;
 
-import org.example.datamodels.AffiliatedUserModel;
-import org.example.interfaces.UserInterface;
 import org.example.validations.AffiliatedUserValidation;
-import org.example.validations.UserValidation;
+
+import java.time.LocalDate;
 
 public class AffiliatedUser extends User {
     private Double monthlyCost;
+
+    private String referredId;
+
+    private LocalDate startDay;
+
+    private LocalDate endDay;
 
     private AffiliatedUserValidation affiliatedUserValidation = new AffiliatedUserValidation();
 
@@ -14,9 +19,10 @@ public class AffiliatedUser extends User {
 
     }
 
-    public AffiliatedUser(Integer id, String document, String names, String email, Integer ubication, Double monthlyCost) {
+    public AffiliatedUser(Integer id, String document, String names, String email, Integer ubication, Double monthlyCost, String referredId) {
         super(id, document, names, email, ubication);
         this.monthlyCost = monthlyCost;
+        this.referredId = referredId;
     }
 
     public Double getMonthlyCost() {
@@ -33,11 +39,48 @@ public class AffiliatedUser extends User {
         }
     }
 
+    public String getReferredId() {
+        return referredId;
+    }
+
+    public void setReferredId(String referredId) {
+        try{
+            this.affiliatedUserValidation.docvalidation(referredId);
+            this.referredId = referredId;
+            this.startDay = LocalDate.now();
+            this.endDay = LocalDate.ofYearDay(startDay.getYear(), startDay.getDayOfYear()+5);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public LocalDate getStartDay() {
+        return startDay;
+    }
+
+    public void setStartDay(LocalDate startDay) {
+        this.startDay = startDay;
+    }
+
+    public LocalDate getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(LocalDate endDay) {
+        this.endDay = endDay;
+    }
+
     public static AffiliatedUser createAffiliatedUser() {
         return new AffiliatedUser();
     }
 
-    public void addGuest(){
+    public Boolean validateGuestTime(){
+        if (this.startDay.isAfter(endDay)){
+            return true;
+        }
+        return false;
 
     }
+
 }

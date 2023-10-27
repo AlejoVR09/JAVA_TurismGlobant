@@ -13,6 +13,7 @@ public class PaidEventUserModel extends UserModel {
     @Column(name = "costPerEvent")
     private double costPerEvent;
 
+
     public static PaidEventUserModel createPaidEventUserModel() {
         return new PaidEventUserModel();
     }
@@ -43,5 +44,15 @@ public class PaidEventUserModel extends UserModel {
 
     public void setCostPerEvent(double costPerEvent) {
         this.costPerEvent = costPerEvent;
+    }
+
+    public Double calculateDescount(Boolean company){
+
+        if(company){
+            return costPerEvent;
+        }
+        else{
+            return costPerEvent-(costPerEvent*0.3);
+        }
     }
 }

@@ -2,7 +2,7 @@ package org.example.validations;
 
 import org.example.Utilities.Util;
 
-public class PaidEventUserValidation {
+public class PaidEventUserValidation extends UserValidation{
 
     Util validator = new Util();
     public Boolean validateCost(Double costPerEvent, Double maxValue) throws Exception{

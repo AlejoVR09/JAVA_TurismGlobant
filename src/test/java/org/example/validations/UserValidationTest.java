@@ -66,4 +66,25 @@ class UserValidationTest {
         System.out.println(respuesta);
         Assertions.assertTrue(respuesta);
     }
+
+    @Test
+    public void docValidationForCharacters() {
+        String doc="10005324a0";
+        Exception respuesta=Assertions.assertThrows(Exception.class, ()-> this.userValidation.docvalidation(doc));
+        Assertions.assertEquals("The Document must have only digits",respuesta.getMessage());
+    }
+
+    @Test
+    public void docValidationLenght() {
+        String doc="10005324400";
+        Exception respuesta=Assertions.assertThrows(Exception.class, ()-> this.userValidation.docvalidation(doc));
+        Assertions.assertEquals("The Document must have exactly 10 characters",respuesta.getMessage());
+    }
+
+    @Test
+    public void docValidation(){
+        String doc="1000532440";
+        Boolean respuesta=Assertions.assertDoesNotThrow(()-> this.userValidation.docvalidation(doc));
+        Assertions.assertTrue(respuesta);
+    }
 }

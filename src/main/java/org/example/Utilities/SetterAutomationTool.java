@@ -24,7 +24,6 @@ public class SetterAutomationTool {
                   //      .getReadMethod()
                     //    .invoke(classInstance)
                       //  .toString();
-
                 PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
@@ -72,6 +71,7 @@ public class SetterAutomationTool {
             try {
                 PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
                 PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
+
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()
                         .invoke(modelInstance, affiliatedUserPropertyDescriptor.getReadMethod().invoke(classInstance));

@@ -1,15 +1,19 @@
 package org.example.controller;
 
-import org.example.datamodels.AffiliatedUserModel;
+import org.example.Utilities.GetterAutomationTool;
 import org.example.datamodels.CulturalCompanyModel;
 import org.example.services.CulturalCompanyService;
 import org.example.entities.CulturalCompany;
+
+import java.util.List;
 
 public class CulturalCompanyController {
     CulturalCompany culturalCompany = new CulturalCompany();
     CulturalCompanyService culturalCompanyService = new CulturalCompanyService();
 
-    public void registerCulturalCompany(String nit, String names, Integer ubication, String description, String ong, String mission, String contactPhone, String contactEmail) {
+    GetterAutomationTool getterAutomationTool = new GetterAutomationTool();
+
+    public void registerCulturalCompany(String nit, String names, Integer ubication, String description, String ong, String mission, String contactPhone, String contactEmail) throws Exception {
         // THIS METHOD MUST BE UPDATED TO ACCEPT WHATEVER FIELDS ARE REQUIRED.
         this.culturalCompany.setNit(nit);
         this.culturalCompany.setNames(names);
@@ -19,8 +23,12 @@ public class CulturalCompanyController {
         this.culturalCompany.setMission(mission);
         this.culturalCompany.setContactPhone(contactPhone);
         this.culturalCompany.setContactEmail(contactEmail);
-        if (true){
+
+        if (getterAutomationTool.getValues(this.culturalCompany)){
             culturalCompanyService.registerCulturalCompany(this.culturalCompany);
+        }
+        else{
+            throw new Exception("Some value/s are wrong!");
         }
     }
 
@@ -28,7 +36,7 @@ public class CulturalCompanyController {
         this.culturalCompanyService.deleteCulturalCompany(id);
     }
 
-    public void getCulturalCompanies() {
+    public List<CulturalCompanyModel> getCulturalCompanies() {
         for (CulturalCompanyModel element : this.culturalCompanyService.searchCulturalCompanies()) {
             System.out.println(
                     "Nit: " + element.getNit() + "\n"+
@@ -40,6 +48,7 @@ public class CulturalCompanyController {
                             "Contact Phone: "+ element.getContactPhone()+"\n"+
                             "Contact Email: " + element.getContactEmail()+ "\n"
             );
-        };
+        }
+        return this.culturalCompanyService.searchCulturalCompanies();
     }
 }

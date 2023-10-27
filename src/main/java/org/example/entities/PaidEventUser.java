@@ -6,6 +6,8 @@ import org.example.validations.PaidEventUserValidation;
 public class PaidEventUser extends User {
     private double costPerEvent;
 
+    private Boolean company;
+
     private PaidEventUserValidation paidEventUserValidation=new PaidEventUserValidation();
 
     public PaidEventUser() {
@@ -30,7 +32,20 @@ public class PaidEventUser extends User {
         }
     }
 
-    public void calculateDescount(){
+    public Boolean getCompany() {
+        return company;
+    }
 
+    public void setCompany(Boolean company) {
+        this.company = company;
+    }
+
+    public Double calculateDescount(){
+        if(company){
+            return costPerEvent;
+        }
+        else{
+            return costPerEvent-(costPerEvent*0.3);
+        }
     }
 }
