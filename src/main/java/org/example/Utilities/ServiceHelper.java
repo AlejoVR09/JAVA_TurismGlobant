@@ -62,7 +62,6 @@ public class ServiceHelper<T> {
                 entityManagerFactory.close();
             }
         }
-        System.out.println(dataToReturn);
         return dataToReturn;
     }
 
@@ -134,12 +133,6 @@ public class ServiceHelper<T> {
             case "create":
                 PaidEventUserModel paidEventUserModel = new PaidEventUserModel();
                 automationTool.updateObjectProperties(Constants.getListOfAcceptedPaidEventUserFields(), paidEventUser, paidEventUserModel);
-
-                // GETTERS AND SETTERS
-                // paidEventUserModel.setNames(paidEventUser.getNames());
-                // paidEventUserModel.setDocument(paidEventUser.getDocument());
-                // paidEventUserModel.setEmail(paidEventUser.getEmail());
-                // paidEventUserModel.setUbication(paidEventUser.getUbication());
                 entityManager.persist(paidEventUserModel);
                 entityManager.getTransaction().commit();
                 System.out.println("Transaction success");
@@ -164,14 +157,14 @@ public class ServiceHelper<T> {
     public ServiceHelper createService() {
         return new ServiceHelper();
     }
-    public ServiceHelper createService(AffiliatedUser userModel) {
+    public ServiceHelper createService(AffiliatedUser affiliatedUser) {
         ServiceHelper newInstance = createInstance();
-        newInstance.affiliatedUser = userModel;
+        newInstance.affiliatedUser = affiliatedUser;
         return newInstance;
     }
-    public ServiceHelper createService(CulturalCompany culturalCompanyModel) {
+    public ServiceHelper createService(CulturalCompany culturalCompany) {
         ServiceHelper newInstance = createInstance();
-        newInstance.culturalCompany = culturalCompanyModel;
+        newInstance.culturalCompany = culturalCompany;
         return newInstance;
     }
     public ServiceHelper createService(PrivateCompany privateCompanyModel) {

@@ -19,11 +19,6 @@ public class SetterAutomationTool {
             // THIS EXECUTES OBJECT SETTERS AND GETTERS
             try {
                 PropertyDescriptor affiliatedUserPropertyDescriptor = new PropertyDescriptor(fieldName, classInstance.getClass());
-                //System.out.println(fieldName);
-                //Object getterValue = affiliatedUserPropertyDescriptor
-                  //      .getReadMethod()
-                    //    .invoke(classInstance)
-                      //  .toString();
                 PropertyDescriptor affiliatedUserModelPropertyDescriptor = new PropertyDescriptor(fieldName, modelInstance.getClass());
                 affiliatedUserModelPropertyDescriptor
                         .getWriteMethod()

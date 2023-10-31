@@ -14,13 +14,14 @@ public class AffiliatedUserController {
     GetterAutomationTool getterAutomationTool = new GetterAutomationTool();
 
     public void registerAffiliatedUser(String names, String document, String email, Integer ubication, Double monthlyCost) throws Exception {
+
         this.affiliatedUser.setNames(names);
         this.affiliatedUser.setDocument(document);
         this.affiliatedUser.setEmail(email);
         this.affiliatedUser.setUbication(ubication);
         this.affiliatedUser.setMonthlyCost(monthlyCost);
 
-        if (getterAutomationTool.getValues(this.affiliatedUser)){
+        if (getterAutomationTool.getValuesWithOutReferred(this.affiliatedUser)){
             affiliatedUserService.registerAffiliatedUser(this.affiliatedUser);
         }
         else{
@@ -49,7 +50,7 @@ public class AffiliatedUserController {
         this.affiliatedUserService.deleteAffiliatedUser(id);
     }
 
-    public List<AffiliatedUserModel> getAffiliatedUsers() {
+    public void getAffiliatedUsers() {
         List<AffiliatedUserModel> affiliatedList=this.affiliatedUserService.searchAffiliatedUsers();
         for (AffiliatedUserModel element : affiliatedList) {
             System.out.println(
@@ -63,8 +64,5 @@ public class AffiliatedUserController {
                             "Referred end date: " + element.getEndDay()+ "\n"
             );
         }
-        return affiliatedList;
-        //affiliatedUsers = (ArrayList<AffiliatedUserModel>) this.affiliatedUserService.searchAffiliatedUsers();
-//        System.out.println("CONTROLLER SEARCH RAN");
     }
 }
